@@ -37,14 +37,13 @@ const rootDir = require('./util/path');
       res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
       next();
   })
-
   
   //connect to mongodb
+  console.log(process.env.database)
   mongoose
     .connect(process.env.database)
     .then(() => console.log("Connected to MongoDB..."))
     .catch(err => console.error("Could not connect to MongoDB..."));
-
 
   app.use(express.json());
   //use users route for api/users
@@ -52,6 +51,12 @@ const rootDir = require('./util/path');
   app.use("/", loginRoutes);
 
   const port = process.env.PORT || 3000;
-  const server = await http.createServer(app).listen(port);
-  server.timeout = 300000;
+  console.log(port)
+
+  app.listen(3000, () => {
+    console.log("Server listening on Port 3000.");
+});
+
+  // const server = http.createServer(app).listen(port);
+  // server.timeout = 300000;
 })();

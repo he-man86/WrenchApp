@@ -1,6 +1,6 @@
 const connectButton = document.getElementById('connectButton');
 const url = connectButton.getAttribute('url');
-
+console.log(url)
 function connectWithHandCash() {
     location.href = url;
 }

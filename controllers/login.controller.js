@@ -8,7 +8,7 @@ module.exports.getLoginLink = async (req, res, next) => {
 
   // fetch authentication url using the SDK
   const redirectUrl = await handCashConnect.getRedirectionUrl({state: "xyz"});
-  
+  console.log(redirectUrl)
   // return page with a login button
   res.render('index', {
     redirectUrl: redirectUrl,
